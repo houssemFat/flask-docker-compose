@@ -1,0 +1,21 @@
+version : "2"
+services :
+        application:
+           image : flask_app
+           links :
+                - mysql
+           ports :
+                - 5000:5000
+           environment:
+                MYSQL_DB_HOST: mysql
+                MYSQL_DB_PASSWORD: flask_app_pass
+        mysql:
+           image: mysql:5.7
+           ports :
+                 - 3066:3066
+           environment:
+                MYSQL_ROOT_PASSWORD: root
+                MYSQL_DATABASE: flask_app_db
+                MYSQL_USER: flask_app_user
+                MYSQL_PASSWORD: flask_app_pass
+
